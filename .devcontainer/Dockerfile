@@ -5,6 +5,8 @@ ARG UID
 
 USER root
 
+RUN mkdir -p /workspaces/oakestra
+
 RUN apt-get update && apt-get install -y curl tar gcc git ca-certificates gnupg procps sudo vim tree
 
 RUN adduser "${USER_NAME}" -u "${UID}" --shell /bin/bash
