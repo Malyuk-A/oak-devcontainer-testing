@@ -4,8 +4,32 @@
 	"name": "oakestra-dev",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "development-environment",
-	"workspaceFolder": "/workspaces/oakestra-dev" 
+	"workspaceFolder": "/workspaces/oakestra-dev",
 
+	"customizations": {
+        "vscode": {
+            "extensions": [
+                "esbenp.prettier-vscode",
+                "golang.go",
+                "ms-python.black-formatter",
+                "ms-python.flake8",
+                "ms-python.isort",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-azuretools.vscode-docker"
+
+            ],
+            "settings": {
+                "[python]": {
+                    "editor.defaultFormatter": "ms-python.black-formatter"
+                },
+                "black-formatter.args": [
+                    "--line-length",
+                    "100"
+                ]
+            }
+        }
+    }
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
