@@ -8,22 +8,10 @@ services:
     #image: oakestra-dev:latest
     build:
       context: ..
-      args:
-        USER_NAME: ${USER_NAME}
-        UID: ${UID}
       dockerfile: .devcontainer/Dockerfile
 
     container_name: oakestra-dev
     hostname: oakestra-dev-environment
-
-    # build:
-    #   context: ..
-    #   dockerfile: .devcontainer/Dockerfile
-
-    # devices:
-    #   - "/dev/dri"
-    # environment:
-    #   DISPLAY: "${DISPLAY}"
 
     # network_mode: host
 
