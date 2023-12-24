@@ -4,7 +4,7 @@
 	"name": "oakestra-dev",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "development-environment",
-	"workspaceFolder": "/oakestra-dev" 
+	"workspaceFolder": "/workspaces/oakestra-dev" 
 
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
