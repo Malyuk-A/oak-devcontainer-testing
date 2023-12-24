@@ -5,13 +5,13 @@ ARG UID
 
 USER root
 
-RUN mkdir -p /workspaces/oakestra
+#RUN mkdir -p /workspaces/oakestra
 
 RUN apt-get update && apt-get install -y curl tar gcc git ca-certificates gnupg procps sudo vim tree
 
-RUN adduser "${USER_NAME}" -u "${UID}" --shell /bin/bash
-RUN usermod -aG sudo "${USER_NAME}"
-RUN echo "${USER_NAME} ALL=(ALL) NOPASSWD:ALL" | tee -a /etc/sudoers
+# RUN adduser "${USER_NAME}" -u "${UID}" --shell /bin/bash
+# RUN usermod -aG sudo "${USER_NAME}"
+# RUN echo "${USER_NAME} ALL=(ALL) NOPASSWD:ALL" | tee -a /etc/sudoers
 
 # # GO
 # RUN curl -LO https://golang.org/dl/go1.21.5.linux-amd64.tar.gz && \
@@ -35,11 +35,12 @@ RUN apt-get install -y bc fonts-powerline &&\
     git clone --recursive https://github.com/andresgongora/synth-shell.git &&\
     chmod +x synth-shell/setup.sh && cd synth-shell && ./setup.sh
 COPY .devcontainer/resources/synth-shell/synth-shell-greeter.config /root/.config/synth-shell/
-RUN cp -r /root/.config /home/${USER_NAME}/
+#RUN cp -r /root/.config /home/${USER_NAME}/
+
 #COPY .devcontainer/resources/synth-shell/synth-shell-greeter.config /root/.config/synth-shell/
 
 # Git
 #RUN git config --global --add safe.directory /workspaces/oakestra
 
 
-USER "${USER_NAME}"
+#USER "${USER_NAME}"

@@ -32,5 +32,5 @@ services:
     tty: true
 
     volumes:
-      - ..:/workspaces/oakestra:cached
+      - ..:/oakestra-dev:cached
       - "~/.ssh:/root/.ssh"
