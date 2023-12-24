@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  development-environment:
+    
+    #image: registry.gitlab.com/cartken/repo/amd64-dev-elopment:${IMAGE_TAG}
+
+    #image: oakestra-dev:latest
+    build:
+      context: ..
+      args:
+        USER_NAME: ${USER_NAME}
+        UID: ${UID}
+      dockerfile: .devcontainer/Dockerfile
+
+    container_name: oakestra-dev
+    hostname: oakestra-dev-environment
+
+    # build:
+    #   context: ..
+    #   dockerfile: .devcontainer/Dockerfile
+
+    # devices:
+    #   - "/dev/dri"
+    # environment:
+    #   DISPLAY: "${DISPLAY}"
+
+    # network_mode: host
+
+    # These two options are having the same effect as calling docker create/run with the -it flags.
+    stdin_open: true
+    tty: true
+
+    volumes:
+      - ..:/workspaces/oakestra:cached
+      - "~/.ssh:/root/.ssh"
