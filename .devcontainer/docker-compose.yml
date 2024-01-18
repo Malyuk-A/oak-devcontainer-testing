@@ -18,7 +18,9 @@ services:
     # These two options are having the same effect as calling docker create/run with the -it flags.
     stdin_open: true
     tty: true
-
+    cap_add:
+      - SYS_ADMIN
     volumes:
       - ..:/workspaces/oakestra-dev:cached
       - "~/.ssh:/root/.ssh"
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro

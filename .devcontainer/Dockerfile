@@ -1,9 +1,10 @@
-FROM python:3.10-slim-buster
+FROM python:3.10-slim-bullseye
 
 USER root
 
-#RUN apt-get update && apt-get install -y curl tar gcc git ca-certificates gnupg procps sudo vim tree
-RUN apt-get update && apt-get install -y git procps vim tree 
+#RUN apt-get update && apt-get install -y git procps sudo systemd systemctl iproute2 vim tree 
+#RUN apt-get update && apt-get install -y git procps sudo systemd systemd-sysv iproute2 vim tree 
+RUN apt-get update && apt-get install -y git procps sudo iproute2 vim tree 
 
 # Style
 RUN apt-get install -y bc fonts-powerline &&\
@@ -13,3 +14,20 @@ COPY .devcontainer/resources/synth-shell/synth-shell-greeter.config /root/.confi
 
 # Git
 #RUN git config --global --add safe.directory /workspaces/oakestra
+
+# COPY .devcontainer/entrypoint.sh /usr/local/bin/
+# RUN chmod +x /usr/local/bin/entrypoint.sh
+# CMD ["/usr/local/bin/entrypoint.sh"]
+
+
+RUN apt-get clean ; \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ; \
+    rm -rf /lib/systemd/system/multi-user.target.wants/* ; \
+    rm -rf /etc/systemd/system/*.wants/* ; \
+    rm -rf /lib/systemd/system/local-fs.target.wants/* ; \
+    rm -rf /lib/systemd/system/sockets.target.wants/*udev* ; \
+    rm -rf /lib/systemd/system/sockets.target.wants/*initctl* ; \
+    rm -rf /lib/systemd/system/sysinit.target.wants/systemd-tmpfiles-setup* ; \
+    rm -rf /lib/systemd/system/systemd-update-utmp*
+
+#CMD ["/lib/systemd/systemd"]
